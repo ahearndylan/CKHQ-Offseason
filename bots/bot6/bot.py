@@ -26,12 +26,15 @@ client = tweepy.Client(
 #     PLAYER FUNCTIONS    #
 # ======================= #
 
+base_dir = os.path.dirname(__file__)
+players_file_path = os.path.join(base_dir, "players.json")
+
 def load_players():
-    with open("players.json", "r") as f:
+    with open(players_file_path, "r") as f:
         return json.load(f)
 
 def save_players(players_list):
-    with open("players.json", "w") as f:
+    with open(players_file_path, "w") as f:
         json.dump(players_list, f, indent=2)
 
 def get_rookie_stats(player_name):
