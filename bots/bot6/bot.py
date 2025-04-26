@@ -23,7 +23,7 @@ client = tweepy.Client(
 )
 
 # ======================= #
-#     PLAYER FUNCTIONS    #
+#   PLAYER FUNCTIONS 1.0  #
 # ======================= #
 
 base_dir = os.path.dirname(__file__)
