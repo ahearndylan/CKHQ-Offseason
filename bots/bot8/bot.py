@@ -1,5 +1,6 @@
 import json
 import tweepy
+import os
 
 # === Twitter Auth === #
 bearer_token = "AAAAAAAAAAAAAAAAAAAAAPztzwEAAAAAvBGCjApPNyqj9c%2BG7740SkkTShs%3DTCpOQ0DMncSMhaW0OA4UTPZrPRx3BHjIxFPzRyeoyMs2KHk6hM"
@@ -23,16 +24,24 @@ categories = [
 ]
 
 def load_category_state():
-    with open("category_state.json", "r") as f:
+    base_dir = os.path.dirname(__file__)
+    path = os.path.join(base_dir, "category_state.json")
+    with open(path, "r") as f:
         return json.load(f)["category"]
 
 def save_category_state(next_cat):
-    with open("category_state.json", "w") as f:
+    base_dir = os.path.dirname(__file__)
+    path = os.path.join(base_dir, "category_state.json")
+    with open(path, "w") as f:
         json.dump({ "category": next_cat }, f)
 
+
 def load_leaderboard_data():
-    with open("leaders_data.json", "r") as f:
+    base_dir = os.path.dirname(__file__)
+    path = os.path.join(base_dir, "leaders_data.json")
+    with open(path, "r") as f:
         return json.load(f)
+
 
 def create_tweet(category, leaders):
     title_map = {

@@ -1,6 +1,7 @@
 import json
 import random
 import tweepy
+import os
 
 # ======================= #
 # TWITTER AUTHENTICATION  #
@@ -24,7 +25,9 @@ client = tweepy.Client(
 # ======================= #
 
 def load_players():
-    with open("players.json", "r") as f:
+    base_dir = os.path.dirname(__file__)
+    path = os.path.join(base_dir, "players.json")
+    with open(path, "r") as f:
         return json.load(f)
 
 def create_debate_poll():

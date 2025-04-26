@@ -1,6 +1,7 @@
 import json
 import random
 import tweepy
+import os
 
 # === Twitter Auth === #
 bearer_token = "AAAAAAAAAAAAAAAAAAAAAPztzwEAAAAAvBGCjApPNyqj9c%2BG7740SkkTShs%3DTCpOQ0DMncSMhaW0OA4UTPZrPRx3BHjIxFPzRyeoyMs2KHk6hM"
@@ -18,7 +19,8 @@ client = tweepy.Client(
 )
 
 # === Draft Bot Config === #
-FILE_PATH = "draft_picks.json"
+base_dir = os.path.dirname(__file__)
+FILE_PATH = os.path.join(base_dir, "draft_picks.json")
 
 def load_draft_data():
     with open(FILE_PATH, "r") as f:
