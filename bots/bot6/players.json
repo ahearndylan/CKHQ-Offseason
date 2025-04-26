@@ -1,0 +1,354 @@
+[
+    {
+      "name": "Metta World Peace",
+      "used": true
+    },
+    {
+      "name": "Rasheed Wallace",
+      "used": true
+    },
+    {
+      "name": "Zach Randolph",
+      "used": false
+    },
+    {
+      "name": "Tyson Chandler",
+      "used": false
+    },
+    {
+      "name": "DeMar DeRozan",
+      "used": false
+    },
+    {
+      "name": "Kyle Lowry",
+      "used": false
+    },
+    {
+      "name": "Marc Gasol",
+      "used": false
+    },
+    {
+      "name": "Jamal Crawford",
+      "used": false
+    },
+    {
+      "name": "Danny Granger",
+      "used": false
+    },
+    {
+      "name": "Peja Stojakovic",
+      "used": false
+    },
+    {
+      "name": "Ricky Rubio",
+      "used": false
+    },
+    {
+      "name": "Pascal Siakam",
+      "used": false
+    },
+    {
+      "name": "Mikal Bridges",
+      "used": false
+    },
+    {
+      "name": "Julius Randle",
+      "used": false
+    },
+    {
+      "name": "Deandre Ayton",
+      "used": false
+    },
+    {
+      "name": "LeBron James",
+      "used": true
+    },
+    {
+      "name": "Michael Jordan",
+      "used": false
+    },
+    {
+      "name": "Kobe Bryant",
+      "used": false
+    },
+    {
+      "name": "Stephen Curry",
+      "used": false
+    },
+    {
+      "name": "Kevin Durant",
+      "used": false
+    },
+    {
+      "name": "Shaquille O'Neal",
+      "used": false
+    },
+    {
+      "name": "Tim Duncan",
+      "used": false
+    },
+    {
+      "name": "Allen Iverson",
+      "used": false
+    },
+    {
+      "name": "Luka Doncic",
+      "used": false
+    },
+    {
+      "name": "Giannis Antetokounmpo",
+      "used": false
+    },
+    {
+      "name": "Dwyane Wade",
+      "used": false
+    },
+    {
+      "name": "Dirk Nowitzki",
+      "used": false
+    },
+    {
+      "name": "Tracy McGrady",
+      "used": false
+    },
+    {
+      "name": "Vince Carter",
+      "used": false
+    },
+    {
+      "name": "Chris Paul",
+      "used": false
+    },
+    {
+      "name": "Paul Pierce",
+      "used": false
+    },
+    {
+      "name": "Russell Westbrook",
+      "used": false
+    },
+    {
+      "name": "James Harden",
+      "used": false
+    },
+    {
+      "name": "Carmelo Anthony",
+      "used": false
+    },
+    {
+      "name": "Dwight Howard",
+      "used": false
+    },
+    {
+      "name": "Demarcus Cousins",
+      "used": false
+    },
+    {
+      "name": "Anthony Davis",
+      "used": false
+    },
+    {
+      "name": "Jayson Tatum",
+      "used": false
+    },
+    {
+      "name": "Jaylen Brown",
+      "used": false
+    },
+    {
+      "name": "Devin Booker",
+      "used": false
+    },
+    {
+      "name": "Ja Morant",
+      "used": false
+    },
+    {
+      "name": "Zion Williamson",
+      "used": false
+    },
+    {
+      "name": "Victor Wembanyama",
+      "used": false
+    },
+    {
+      "name": "Chet Holmgren",
+      "used": false
+    },
+    {
+      "name": "Shai Gilgeous-Alexander",
+      "used": false
+    },
+    {
+      "name": "Anthony Edwards",
+      "used": false
+    },
+    {
+      "name": "Kawhi Leonard",
+      "used": false
+    },
+    {
+      "name": "Jimmy Butler",
+      "used": false
+    },
+    {
+      "name": "LaMelo Ball",
+      "used": false
+    },
+    {
+      "name": "Lonzo Ball",
+      "used": false
+    },
+    {
+      "name": "Ben Simmons",
+      "used": false
+    },
+    {
+      "name": "Karl-Anthony Towns",
+      "used": false
+    },
+    {
+      "name": "Joel Embiid",
+      "used": false
+    },
+    {
+      "name": "Nikola Jokic",
+      "used": false
+    },
+    {
+      "name": "Damian Lillard",
+      "used": false
+    },
+    {
+      "name": "Klay Thompson",
+      "used": false
+    },
+    {
+      "name": "Draymond Green",
+      "used": false
+    },
+    {
+      "name": "Steve Nash",
+      "used": false
+    },
+    {
+      "name": "Jason Kidd",
+      "used": false
+    },
+    {
+      "name": "Grant Hill",
+      "used": false
+    },
+    {
+      "name": "Yao Ming",
+      "used": false
+    },
+    {
+      "name": "Manu Ginobili",
+      "used": false
+    },
+    {
+      "name": "Tony Parker",
+      "used": false
+    },
+    {
+      "name": "Pau Gasol",
+      "used": false
+    },
+    {
+      "name": "Kevin Garnett",
+      "used": false
+    },
+    {
+      "name": "Ray Allen",
+      "used": false
+    },
+    {
+      "name": "Reggie Miller",
+      "used": false
+    },
+    {
+      "name": "Charles Barkley",
+      "used": false
+    },
+    {
+      "name": "Karl Malone",
+      "used": false
+    },
+    {
+      "name": "John Stockton",
+      "used": false
+    },
+    {
+      "name": "Hakeem Olajuwon",
+      "used": false
+    },
+    {
+      "name": "Patrick Ewing",
+      "used": false
+    },
+    {
+      "name": "Scottie Pippen",
+      "used": false
+    },
+    {
+      "name": "Dennis Rodman",
+      "used": false
+    },
+    {
+      "name": "Alonzo Mourning",
+      "used": false
+    },
+    {
+      "name": "Shawn Kemp",
+      "used": false
+    },
+    {
+      "name": "Penny Hardaway",
+      "used": false
+    },
+    {
+      "name": "JR Smith",
+      "used": false
+    },
+    {
+      "name": "Jeremy Lin",
+      "used": false
+    },
+    {
+      "name": "Baron Davis",
+      "used": false
+    },
+    {
+      "name": "Brandon Roy",
+      "used": false
+    },
+    {
+      "name": "Derrick Rose",
+      "used": false
+    },
+    {
+      "name": "Gilbert Arenas",
+      "used": false
+    },
+    {
+      "name": "Chris Bosh",
+      "used": false
+    },
+    {
+      "name": "Andrew Wiggins",
+      "used": false
+    },
+    {
+      "name": "Tyrese Haliburton",
+      "used": false
+    },
+    {
+      "name": "Jalen Green",
+      "used": false
+    },
+    {
+      "name": "Scoot Henderson",
+      "used": false
+    }
+  ]
