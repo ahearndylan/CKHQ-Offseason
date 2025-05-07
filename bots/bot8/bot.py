@@ -1,6 +1,7 @@
 import json
 import tweepy
 from supabase import create_client, Client
+import os
 
 # === Supabase Config ===
 supabase_url = "https://fjtxowbjnxclzcogostk.supabase.co"
@@ -40,7 +41,9 @@ categories = [
 ]
 
 def load_leaderboard_data():
-    with open("leaders_data.json", "r") as f:
+    base_dir = os.path.dirname(__file__)
+    path = os.path.join(base_dir, "leaders_data.json")
+    with open(path, "r") as f:
         return json.load(f)
 
 def create_tweet(category, leaders):
