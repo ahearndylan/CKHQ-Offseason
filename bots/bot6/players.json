@@ -1,22 +1,22 @@
 [
   {
     "name": "Rasheed Wallace",
-    "used": true,
+    "used": false,
     "image": "rahseedwallace.jpeg"
   },
   {
     "name": "Zach Randolph",
-    "used": true,
+    "used": false,
     "image": "img/zachrandolph.jpeg"
   },
   {
     "name": "Tyson Chandler",
-    "used": true,
+    "used": false,
     "image": "tysonchandler.jpg"
   },
   {
     "name": "DeMar DeRozan",
-    "used": true,
+    "used": false,
     "image": "demarderozan.jpg"
   },
   {
