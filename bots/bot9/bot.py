@@ -18,10 +18,16 @@ client = tweepy.Client(
     access_token_secret=access_token_secret
 )
 
-# === Draft Bot Config === #
-base_dir = os.path.dirname(__file__)
-FILE_PATH = os.path.join(base_dir, "draft_picks.json")
+# Tweepy v1.1 API for media uploads
+auth = tweepy.OAuth1UserHandler(api_key, api_secret, access_token, access_token_secret)
+api_v1 = tweepy.API(auth)
 
+# === File Paths === #
+base_dir = os.path.dirname(os.path.abspath(__file__))
+FILE_PATH = os.path.join(base_dir, "draft_picks.json")
+IMG_DIR = os.path.join(base_dir, "img")
+
+# === Load and Save JSON === #
 def load_draft_data():
     with open(FILE_PATH, "r") as f:
         return json.load(f)
@@ -30,6 +36,7 @@ def save_draft_data(data):
     with open(FILE_PATH, "w") as f:
         json.dump(data, f, indent=2)
 
+# === Pick unused player === #
 def get_unused_pick(data):
     unused = [p for p in data if not p.get("used", False)]
     if not unused:
@@ -37,6 +44,7 @@ def get_unused_pick(data):
         return None
     return random.choice(unused)
 
+# === Format tweet text === #
 def format_tweet(player):
     return (
         f"👑 Draft Royalty\n"
@@ -46,32 +54,43 @@ def format_tweet(player):
         f"#NBADraft #CourtKingsHQ"
     )
 
+# === Main Bot Run === #
 def main():
     print("🤖 Running Court Kings Draft Throwback Bot...\n")
 
     data = load_draft_data()
     pick = get_unused_pick(data)
 
-    if pick:
-        tweet = format_tweet(pick)
-        print(tweet)
+    if not pick:
+        print("🎉 All entries used. Add more players to the file to continue.")
+        return
 
-        # Tweet it out
-        try:
+    tweet = format_tweet(pick)
+    print(tweet)
+
+    image_file = pick.get("image", "")
+    image_path = os.path.join(IMG_DIR, image_file)
+
+    try:
+        if image_file and os.path.exists(image_path):
+            media = api_v1.media_upload(filename=image_path)
+            client.create_tweet(text=tweet, media_ids=[media.media_id_string])
+            print(f"✅ Tweet posted with image: {image_file}")
+        else:
+            print(f"⚠️ No image found at: {image_path}")
             client.create_tweet(text=tweet)
-            print("✅ Tweet posted!")
-        except Exception as e:
-            print("❌ Failed to tweet:", e)
+            print("✅ Tweet posted without image.")
 
-        # Mark player as used
+        # Mark as used
         for p in data:
             if p["player"] == pick["player"] and p["year"] == pick["year"]:
                 p["used"] = True
                 break
 
         save_draft_data(data)
-    else:
-        print("🎉 All entries used. Add more players to the file to continue.")
+
+    except Exception as e:
+        print("❌ Failed to tweet:", e)
 
 if __name__ == "__main__":
     main()

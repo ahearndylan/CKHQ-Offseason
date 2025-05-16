@@ -22,12 +22,16 @@ client = tweepy.Client(
     access_token_secret=access_token_secret
 )
 
+auth = tweepy.OAuth1UserHandler(api_key, api_secret, access_token, access_token_secret)
+api_v1 = tweepy.API(auth)
+
 # ======================= #
-#   PLAYER FUNCTIONS 1.0  #
+#   PLAYER FUNCTIONS      #
 # ======================= #
 
-base_dir = os.path.dirname(__file__)
+base_dir = os.path.dirname(os.path.abspath(__file__))
 players_file_path = os.path.join(base_dir, "players.json")
+img_dir = os.path.join(base_dir, "img")
 
 def load_players():
     with open(players_file_path, "r") as f:
@@ -79,10 +83,23 @@ def get_rookie_stats(player_name):
         print(f"⚠️ Failed to get stats for {player_name}: {e}")
         return None
 
-def post_tweet(text):
+def post_tweet(text, image_file=None):
     try:
-        client.create_tweet(text=text)
-        print("✅ Tweet posted.")
+        if image_file:
+            image_file = os.path.basename(image_file)  # Strip any accidental path
+            image_path = os.path.join(img_dir, image_file)
+            print(f"📷 Trying image: {image_path}")
+            if os.path.exists(image_path):
+                media = api_v1.media_upload(filename=image_path)
+                client.create_tweet(text=text, media_ids=[media.media_id_string])
+                print(f"✅ Tweet posted with image: {image_file}")
+            else:
+                print(f"⚠️ Image not found: {image_path}. Posting without image.")
+                client.create_tweet(text=text)
+        else:
+            client.create_tweet(text=text)
+            print("✅ Tweet posted without image.")
+
     except Exception as e:
         print("❌ Tweet failed:", e)
 
@@ -97,7 +114,7 @@ def main():
             tweet = get_rookie_stats(player["name"])
             if tweet:
                 print("\n" + tweet)
-                post_tweet(tweet)
+                post_tweet(tweet, image_file=player.get("image", None))
                 player["used"] = True
                 save_players(players_list)
             sleep(1)
