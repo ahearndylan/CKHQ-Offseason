@@ -231,7 +231,7 @@
   },
   {
     "name": "LaMelo Ball",
-    "used": true,
+    "used": false,
     "image": "lameloball.jpg"
   },
   {
@@ -363,11 +363,6 @@
     "name": "Shawn Kemp",
     "used": false,
     "image": "shawnkemp.jpg"
-  },
-  {
-    "name": "Penny Hardaway",
-    "used": false,
-    "image": "pennyhardaway.jpg"
   },
   {
     "name": "JR Smith",
