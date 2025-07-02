@@ -49,40 +49,46 @@ def get_rookie_stats(player_name):
         return None
 
     player_id = found[0]["id"]
-    try:
-        career = playercareerstats.PlayerCareerStats(player_id=player_id).get_data_frames()[0]
-        rookie_row = career.iloc[0]
 
-        pts = rookie_row["PTS"]
-        reb = rookie_row["REB"]
-        ast = rookie_row["AST"]
-        gp = rookie_row["GP"]
-        fg_pct = rookie_row["FG_PCT"]
-        season = rookie_row["SEASON_ID"]
-        team = rookie_row["TEAM_ABBREVIATION"]
+    for attempt in range(3):  # Try up to 3 times
+        try:
+            career = playercareerstats.PlayerCareerStats(player_id=player_id).get_data_frames()[0]
+            rookie_row = career.iloc[0]
 
-        if gp == 0:
-            print(f"⚠️ No games played for {player_name}")
-            return None
+            pts = rookie_row["PTS"]
+            reb = rookie_row["REB"]
+            ast = rookie_row["AST"]
+            gp = rookie_row["GP"]
+            fg_pct = rookie_row["FG_PCT"]
+            season = rookie_row["SEASON_ID"]
+            team = rookie_row["TEAM_ABBREVIATION"]
 
-        ppg = round(pts / gp, 1)
-        rpg = round(reb / gp, 1)
-        apg = round(ast / gp, 1)
-        fg = round(fg_pct * 100, 1)
+            if gp == 0:
+                print(f"⚠️ No games played for {player_name}")
+                return None
 
-        tweet = (
-            f"👑 Rookie Royalty – {player_name}\n\n"
-            f"📅 Season: {season} ({team})\n"
-            f"🚀 Stats: {ppg} PPG · {rpg} RPG · {apg} APG · {fg}% FG\n"
-            f"🕹️ Games Played: {gp}\n\n"
-            f"#NBA #NBAStats #CourtKingsHQ"
-        )
+            ppg = round(pts / gp, 1)
+            rpg = round(reb / gp, 1)
+            apg = round(ast / gp, 1)
+            fg = round(fg_pct * 100, 1)
 
-        return tweet
+            tweet = (
+                f"👑 Rookie Royalty – {player_name}\n\n"
+                f"📅 Season: {season} ({team})\n"
+                f"🚀 Stats: {ppg} PPG · {rpg} RPG · {apg} APG · {fg}% FG\n"
+                f"🕹️ Games Played: {gp}\n\n"
+                f"#NBA #NBAStats #CourtKingsHQ"
+            )
 
-    except Exception as e:
-        print(f"⚠️ Failed to get stats for {player_name}: {e}")
-        return None
+            return tweet
+
+        except Exception as e:
+            print(f"⚠️ Attempt {attempt + 1} failed for {player_name}: {e}")
+            sleep(3)
+
+    print(f"❌ All attempts failed for {player_name}")
+    return None
+
 
 def post_tweet(text, image_file=None):
     try:
