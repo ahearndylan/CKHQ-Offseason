@@ -4,6 +4,7 @@ from nba_api.stats.endpoints import playercareerstats
 from time import sleep
 import tweepy
 import os
+import random
 
 # ======================= #
 # TWITTER AUTHENTICATION  #
@@ -109,16 +110,24 @@ def post_tweet(text, image_file=None):
 
 def main():
     players_list = load_players()
-    for player in players_list:
-        if not player["used"]:
-            tweet = get_rookie_stats(player["name"])
-            if tweet:
-                print("\n" + tweet)
-                post_tweet(tweet, image_file=player.get("image", None))
-                player["used"] = True
-                save_players(players_list)
-            sleep(1)
-            break  # Only one player per run
+    unused = [p for p in players_list if not p["used"]]
+    if not unused:
+        print("✅ All players used.")
+        return
+
+    player = random.choice(unused)
+    tweet = get_rookie_stats(player["name"])
+    if tweet:
+        print("\n" + tweet)
+        post_tweet(tweet, image_file=player.get("image", None))
+        # Mark as used and save
+        for p in players_list:
+            if p["name"] == player["name"]:
+                p["used"] = True
+                break
+        save_players(players_list)
+        sleep(1)
+
 
 if __name__ == "__main__":
     main()
