@@ -2,7 +2,7 @@ name: Run Bot 9 (Draft Throwback Bot)
 
 on:
   schedule:
-    - cron: '0 15 * * 6'  # Every Saturday at 11am EST
+    - cron: '0 15 */2 * *'  # Every Saturday at 11am EST
   workflow_dispatch:
 
 jobs:
